@@ -9,6 +9,7 @@ if (!defined($count)) {
 
 sub queryServerStatusSequentially {
 	for (my $i = 0; $i < $count; $i++) {
+		print "Test case ", $i + 1, ":\n";
 		print "$cmd\n";
 		print `$cmd`, "\n";
 	}

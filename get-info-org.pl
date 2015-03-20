@@ -2,7 +2,7 @@
 use strict;
 use 5.010;
 
-my $cmd = 'curl -u "NTT:uByvA5ejaSu8" ';
+my $cmd = 'curl -s -S -u "NTT:uByvA5ejaSu8" ';
 my $url = 'http://172.18.190.17:9501/api/v1/organization/';
 my $path = '/licenses';
 

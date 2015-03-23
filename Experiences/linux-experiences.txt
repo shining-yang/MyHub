@@ -1,0 +1,7 @@
+1. Linux Mint 更新有问题
+
+终端中输入以下两条命令：
+sudo rm /var/lib/apt/lists/* -vf
+sudo apt-get update 
+
+

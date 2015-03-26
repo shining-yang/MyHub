@@ -13,6 +13,7 @@ Manually config static IP address for a host
 hostname="ysnBSD"
 #ifconfig_em0="DHCP"
 ifconfig_em0="172.18.190.38 netmask 255.255.255.0"
+defaultrouter="172.18.190.254"
 sshd_enable="YES"
 mysql_enable="YES"
 `-------------------------------------------

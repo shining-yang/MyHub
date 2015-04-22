@@ -10,5 +10,7 @@ $ git config --global credential.helper 'cache --timeout=3600'
 
 // remove a remote tag
 git push --delete origin my-tag-to-delete
+
 // get remote tag
 git fetch origin tag <tagname>
+

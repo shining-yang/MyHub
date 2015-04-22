@@ -1,7 +1,7 @@
 #!/usr/bin/perl -w
 use strict;
 
-my $cmd = 'curl -s -S -i http://172.18.190.38:9502/api/v1/server/status';
+my $cmd = 'curl -s -S -i http://172.18.190.138:9502/api/v1/server/status';
 my ($count) = @ARGV;
 if (!defined($count)) {
 	$count = 10;
@@ -16,6 +16,7 @@ sub queryServerStatusSequentially {
 }
 
 sub queryServerStatusConcurrently {
+	while (1) {
 	my $cmdAll = '';
 	for (my $i = 0; $i < $count; $i++) {
 		$cmdAll .= $cmd;
@@ -24,6 +25,7 @@ sub queryServerStatusConcurrently {
 
 	print $cmdAll, "\n";
 	print `$cmdAll`, "\n";
+}
 }
 
 if ((@ARGV == 2) && ($ARGV[0] =~ /^\d+$/) &&

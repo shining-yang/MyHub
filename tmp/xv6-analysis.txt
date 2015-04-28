@@ -7,3 +7,9 @@ xv6
 [2015-04-27]
 Do homework of OS.
 
+[2015-04-28]
+xv6 file system
+ - ide driver
+ - buffer cache
+ - log
+

@@ -12,4 +12,10 @@ xv6 file system
  - ide driver
  - buffer cache
  - log
+ - inode
+
+[2015-04-29]
+ - file descriptor
+ - system call
+
 

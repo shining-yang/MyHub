@@ -34,8 +34,6 @@ if ($start_port > $end_port) {
 	exit(0);
 }
 
-print "Start: ", $start_port, "\n";
-
 print_usage_and_exit() if ($start_port <= 0 || $end_port <= 0);
 
 ### Begin to generate file after verify arguments
@@ -50,7 +48,7 @@ print $prologue;
 
 open(OFILE, '>', $output_file) or die "Cannot open file '$output_file' for write: ", $!;
 print OFILE "#\n";
-print OFILE "# Sample usage: snmpsimd --args-from-file=sim_port_###.txt\n";
+print OFILE "# Sample usage: snmpsimd --args-from-file=", $output_file, "\n";
 print OFILE "# File generated at: ", $now_time, "\n";
 print OFILE "#\n";
 

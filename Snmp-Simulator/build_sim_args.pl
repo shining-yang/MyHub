@@ -58,6 +58,6 @@ foreach my $port ($start_port .. $end_port) {
 close(OFILE);
 
 # completed
-my $epilogue = qq{Operation completed. Please check the generated file 'sim_port_###.txt'.\n};
+my $epilogue = qq{Operation completed. Please check the generated file: '$output_file'.\n};
 print $epilogue;
 

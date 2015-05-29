@@ -1,6 +1,9 @@
 #!/usr/bin/perl -w
 use strict;
 
+#
+### Check the input arguments
+#
 sub print_usage {
 	my $usage = '';
 	$usage .= qq{Usage:\n};
@@ -36,9 +39,10 @@ if ($start_port > $end_port) {
 
 print_usage_and_exit() if ($start_port <= 0 || $end_port <= 0);
 
+#
 ### Begin to generate file after verify arguments
-
-my $args = '--agent-udpv4-endpoint=172.18.190.13';
+#
+my $args = '--agent-udpv4-endpoint=172.18.190.78';
 my $output_file = 'sim_port_'.$start_port.'_'.$end_port.'.txt';
 my $now_time = localtime();
 

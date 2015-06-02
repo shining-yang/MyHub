@@ -7,6 +7,9 @@ use strict;
 #
 ####################################################################
 
+my $pwd = `pwd`;
+chomp $pwd;
+
 #
 # NOTE: 
 # Without any validations fro simplicity and efficiency.
@@ -16,6 +19,12 @@ sub create_symbolic_links {
 	my ($path, $start_id, $total_count) = @_;
 	if (substr($path, -1) ne '/') {
 		$path .= '/';
+	}
+
+	if (substr($path, 0, 2) eq './') {
+		$path = substr($path, 2);
+		$path = $pwd.'/'.$path;
+		# print $path, "\n\n";
 	}
 
 	my $path_output = './tmp/';
@@ -37,6 +46,8 @@ sub create_symbolic_links {
 		$cmd .= $id;
 		$cmd .= $file_name_extension;
 
+		# print $cmd, "\n";
+
 		`$cmd`;
 	}
 }
@@ -54,7 +65,8 @@ if (@ARGV < 3) {
 	exit(0);
 }
 
+print("Creating symbolic links ...\n");
 my ($path, $i, $n) = @ARGV;
-print("Finish creating symbolic links to file.\n");
 &create_symbolic_links($path, $i, $n);
+print("Operation commpleted.\n");
 

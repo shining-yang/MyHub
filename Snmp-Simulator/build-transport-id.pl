@@ -25,6 +25,8 @@ sub create_symbolic_links {
 		$path = substr($path, 2);
 		$path = $pwd.'/'.$path;
 		# print $path, "\n\n";
+	} elsif (substr($path, 0, 1) ne '/') {
+		$path = $pwd.'/'.$path;
 	}
 
 	my $path_output = './tmp/';
@@ -37,7 +39,8 @@ sub create_symbolic_links {
 	my $file_name_extension = '.snmprec';
 
 	for (my $id = $start_id; $id < $start_id + $total_count; $id++) {
-		my $cmd = "ln -s ";
+		# my $cmd = "ln -s ";
+		my $cmd = "cp ";
 		$cmd .= $path;
 		$cmd .= $base_file;
 		$cmd .= ' ';

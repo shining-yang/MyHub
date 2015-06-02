@@ -42,9 +42,17 @@ print_usage_and_exit() if ($start_port <= 0 || $end_port <= 0);
 #
 ### Begin to generate file after verify arguments
 #
-my $args = '--agent-udpv4-endpoint=172.18.190.78';
-my $output_file = 'sim_port_'.$start_port.'_'.$end_port.'.txt';
 my $now_time = localtime();
+my $args = '--agent-udpv4-endpoint=172.18.190.46';
+my $output_file = 'sim_port_'.$start_port.'_'.$end_port.'.txt';
+
+# Ensure that 'tmp' dir is available
+if (! -d 'tmp') {
+	`mkdir tmp`;
+}
+
+my $working_dir = './tmp/';
+$output_file = $working_dir.$output_file;
 
 # starting
 my $prologue = qq{Operation starting...\n};

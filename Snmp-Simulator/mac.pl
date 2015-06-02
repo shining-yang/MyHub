@@ -1,6 +1,4 @@
-#!/usr/bin/perl
-
-#use warnings;
+#!/usr/bin/perl -w
 use strict;
 
 my $mac_prefix = '001a1a1a'; # support 65535 MACs at most
@@ -16,6 +14,7 @@ my $mac_prefix = '001a1a1a'; # support 65535 MACs at most
 #
 sub generate_mac_str {
 	my ($id) = @_;
+	$id = 0 unless defined $id;
 	return sprintf("%s%04x", $mac_prefix, $id);
 }
 
@@ -24,8 +23,10 @@ sub generate_mac_str {
 # We'll get the last number
 #
 
-my @args = split('\.', $ARGV[0]);
-pop @args;
-my $num = pop @args;
-print &generate_mac_str($num), "\n";
-
+my $num = 0;
+unless (@ARGV < 1) {
+	my @args = split('\.', $ARGV[0]);
+	pop @args;
+	$num = pop @args;
+}
+print &generate_mac_str($num);

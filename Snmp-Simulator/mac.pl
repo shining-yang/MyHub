@@ -1,6 +1,12 @@
 #!/usr/bin/perl -w
 use strict;
 
+#####################################################################
+#
+# y.s.n@live.com, 2015-06-02, SNMP-Simulation
+#
+####################################################################
+
 my $mac_prefix = '001a1a1a'; # support 65535 MACs at most
 
 # Better efficiency without bounds checking. Assume that ARGV is available

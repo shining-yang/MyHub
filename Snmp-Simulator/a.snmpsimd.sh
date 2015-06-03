@@ -1,5 +1,12 @@
 #!/bin/sh
 
+#####################################################################
+#
+# y.s.n@live.com, 2015-06-02, SNMP-Simulation
+#
+####################################################################
+
+
 # REMOVE the tmp directory so that we can start over again
 echo "### Removing tmp directory to start over ...";
 rm -rf tmp/

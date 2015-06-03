@@ -42,5 +42,9 @@ address.
 #### How to Run
 Navigate to the directory of this project with your terminal. Then
 issue the following command to start SNMP simulator with
-default/predefined settings.
+default/predefined settings.  
     `$ ./a.snmpsimd.sh`
+
+#### Spec & Additional Notes
+* Currently support to simulate 10000 devices at most.  
+* SNMP simulators use UDP port starting from 50000.  

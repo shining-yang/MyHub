@@ -50,7 +50,6 @@ sub create_symbolic_links {
 		$cmd .= $file_name_extension;
 
 		# print $cmd, "\n";
-
 		`$cmd`;
 	}
 }

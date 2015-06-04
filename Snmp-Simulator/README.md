@@ -12,6 +12,10 @@ The SNMP simulator is originally built on the following environment.
 * python v2.7.6
 * snmpsid v0.2.4
 
+#### Constraints
+* SNMP simulators use empty string as SNMP community name.
+* SNMP simulators support only part of SNMP requests.
+
 #### Working Environment
 * The directory `static` contains some original captured SNMP-Record  files which is READONLY and will not be changed by any scripts.
 * The directory `tmp` is auto-generated when start running SNMP
@@ -42,7 +46,7 @@ address.
 #### How to Run
 Navigate to the directory of this project with your terminal. Then
 issue the following command to start SNMP simulator with
-default/predefined settings.  
+default/predefined settings.   
     `$ ./a.snmpsimd.sh`
 
 #### Spec & Additional Notes

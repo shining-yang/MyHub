@@ -13,7 +13,7 @@ rm -rf tmp/
 
 # Generate simulator argument files
 echo "### Building simulator arguments ..."
-perl build-simulator-args.pl 50000 50299
+perl build-simulator-args.pl 172.18.190.46 50000 50299
 
 # Start snmp simulators
 echo "### Building SNMP transport id ..."

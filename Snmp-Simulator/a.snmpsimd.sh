@@ -13,12 +13,12 @@ rm -rf tmp/
 
 # Generate simulator argument files
 echo "### Building simulator arguments ..."
-perl build-simulator-args.pl 172.18.190.46 50000 50299
+perl build-simulator-args.pl 172.18.190.46 50000 50001
 
 # Start snmp simulators
 echo "### Building SNMP transport id ..."
-perl build-transport-id.pl ./static/DES-3028 1000 300
+perl build-transport-id.pl ./static/DES-3028 1000 3
 
 # READY to invoke
 echo "### Run SNMP simulators now ...";
-snmpsimd  --v2c-arch  --data-dir=./tmp  --transport-id-offset=1000  --args-from-file=./tmp/sim_port_50000_50299.txt 
+snmpsimd  --v2c-arch  --data-dir=./tmp  --transport-id-offset=1000  --args-from-file=./tmp/sim_port_50000_50001.txt 

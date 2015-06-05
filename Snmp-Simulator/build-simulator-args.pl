@@ -13,9 +13,9 @@ use strict;
 sub print_usage {
 	my $usage = '';
 	$usage .= qq{Usage:\n};
-	$usage .= qq{\tTHIS-PERL-SCRIPT  START-PORT-NO  END-PORT-NO\n};
+	$usage .= qq{\tTHIS-PERL-SCRIPT  IPv4-ADDRESS  START-PORT-NO  END-PORT-NO\n};
 	$usage .= qq{Example:\n};
-	$usage .= qq{\t'THIS-PERL-SCRIPT  50000  50099' will generate a file called 'sim_port_50000_50099.txt' };
+	$usage .= qq{\t'THIS-PERL-SCRIPT  172.18.190.46  50000  50099' will generate a file called 'sim_port_50000_50099.txt' };
     $usage .= qq{which contains a series of simulated ip:port arguments for snmpsimd utility.\n\n};
 	print $usage;
 }
@@ -25,20 +25,23 @@ sub print_usage_and_exit {
 	exit(0);
 }
 
-if (scalar(@ARGV) < 2) {
+if (scalar(@ARGV) < 3) {
 	print_usage_and_exit();
 }
 
-my ($start_port, $end_port) = @ARGV;
+my ($host_ip, $start_port, $end_port) = @ARGV;
 
-if (($start_port =~ /^[1-9]+\d*$/) && ($end_port =~ /^[1-9]+\d*$/)) {
-	# OK. We need numerics here
-} else {
+unless ($host_ip =~ /^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/) { # simple ip verificaion, but not strict one
+	print "Your must specify the host ip.\n";
+	exit(0);
+}
+
+unless (($start_port =~ /^[1-9]+\d*$/) && ($end_port =~ /^[1-9]+\d*$/)) {
 	print "You must specify numerics here.\n";
 	exit(0);
 }
 
-if ($start_port > $end_port) {
+unless ($start_port <= $end_port) {
 	print "Start-Port must not greater than End-Port.\n";
 	exit(0);
 }
@@ -49,7 +52,7 @@ print_usage_and_exit() if ($start_port <= 0 || $end_port <= 0);
 ### Begin to generate file after verify arguments
 #
 my $now_time = localtime();
-my $args = '--agent-udpv4-endpoint=172.18.190.46';
+my $args = '--agent-udpv4-endpoint='.$host_ip;
 my $output_file = 'sim_port_'.$start_port.'_'.$end_port.'.txt';
 
 # Ensure that 'tmp' dir is available

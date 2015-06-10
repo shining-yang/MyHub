@@ -93,14 +93,16 @@ sub create_snmp_records {
 		
 		### Replace file content with specific string, lazy method.
 		my $new_mac = &generate_mac_by_id($id);
-		&replace_file_content_string($path_output.$file_name_prefix.$id.$file_name_extension,
-			$mac_placeholder, $new_mac);
+		&replace_file_content_string(
+			$path_output.$file_name_prefix.$id.$file_name_extension,
+			$mac_placeholder,
+			$new_mac);
 	}
 }
 
 sub print_usage {
 	print("Usage:\n");
-	print("\tTHIS-SCRIPT  PATH-TO-BASE-SNMPREC  START-ID  TOTAL-ID-COUNT\n");
+	print("\tTHIS-SCRIPT  PATH-OF-SNMPREC  START-ID  TOTAL-ID-COUNT\n");
 	print("Example:\n");
 	print("\tTHIS-SCRIPT  ./static  10  2\n");
 }

@@ -1,16 +1,18 @@
 #!/usr/bin/perl -w
 use strict;
 
-my ($hostip) = @ARGV;
-my $start_port = 50000;		# Start port NO.
-my $port_count = 100;		# Number of ports supported within each script file
-my $id_offset = 1000;		# Transport id offset for SNMPSIMD
-my $script_file = 'sim';	# prefix of generated script file name
-my $script_file_count = 10;	# number of script to generate
+my ($hostip)	= @ARGV;
+my $start_port	= 50000;		# Start port NO.
+my $port_count	= 200;			# Number of ports supported within each script file
+my $id_offset	= 1000;			# Transport id offset for SNMPSIMD
+my $script_file	= 'sim';		# prefix of generated script file name
+my $script_file_count = 10;		# number of script to generate
 
 if (@ARGV < 1) {
 	print "Usage:\n";
 	print "\tSCRIPT  host-ip\n";
+	print "Example:\n";
+	print "\tSCRIPT  172.18.190.46\n";
 	exit(0);
 }
 

@@ -102,7 +102,7 @@ sub print_usage {
 	print("Usage:\n");
 	print("\tTHIS-SCRIPT  PATH-TO-BASE-SNMPREC  START-ID  TOTAL-ID-COUNT\n");
 	print("Example:\n");
-	print("\tTHIS-SCRIPT  ./static/DES-3028  10  2\n");
+	print("\tTHIS-SCRIPT  ./static  10  2\n");
 }
 
 if (@ARGV < 3) {

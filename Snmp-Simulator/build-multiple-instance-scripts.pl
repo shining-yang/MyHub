@@ -10,7 +10,7 @@ my $script_file_count = 10;		# number of script to generate
 
 if (@ARGV < 1) {
 	print "Usage:\n";
-	print "\tSCRIPT  host-ip\n";
+	print "\tSCRIPT  local-host-ip-to-listen\n";
 	print "Example:\n";
 	print "\tSCRIPT  172.18.190.46\n";
 	exit(0);

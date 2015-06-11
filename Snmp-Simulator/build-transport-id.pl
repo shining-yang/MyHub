@@ -64,7 +64,7 @@ sub create_snmp_records {
 	##########################################################################
 	# CURRENTLY supported device types, THESE words must be directory names
 	##########################################################################
-	my @support_types = qw(DAP-3690 DES-3028);
+	my @support_types = qw(DAP-3690 DES-3028 DWS-4026);
 
 	my $base_file = 'base.snmprec.bak';
 	my $file_name_prefix = '1.3.6.1.6.1.1.';

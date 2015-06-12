@@ -35,6 +35,8 @@ for (my $n = 0; $n < $output_file_count; $n++) {
 	open(F, ">", $output_file_name) or die "Fail to open file: $!";
 	print F "#!/bin/sh\n";
 	print F "# This is an auto-generated file which will be used to launch as an SNMP simulator.\n";
+	print F "\n# 0. Cleanup to start over\n";
+	print F "rm -rf tmp/\n";
 	print F "\n# 1. Generate SNMP simulator argument files\n";
 	print F $script1.$host_ip." ".$start_port." ".($start_port + $port_count - 1)."\n";
 	print F "\n# 2. Build SNMP simulator transport id\n";

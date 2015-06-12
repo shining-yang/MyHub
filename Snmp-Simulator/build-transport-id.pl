@@ -9,9 +9,17 @@ use strict;
 
 my $mac_prefix = '001a1a1a'; # mac prefix for simulated snmp devices
 my $mac_placeholder = '001c1c1c1c1c';
+my $device_name_placeholder = 'DEVICE-NAME-XX';
 my $pwd = `pwd`;
 chomp $pwd;
 
+
+sub generate_device_name_by_id {
+	my ($id) = @_;
+	$id = 0 unless defined $id;
+	$id &= 0xFFFF;
+	return sprintf("SIM-dev-%d", $id);
+}
 
 sub generate_mac_by_id {
 	my ($id) = @_;
@@ -71,7 +79,8 @@ sub create_snmp_records {
 	my $file_name_extension = '.snmprec';
 
 	for (my $id = $start_id; $id < $start_id + $total_count; $id++) {
-		my $support_index = $id % (@support_types); # modular
+		my $support_index = $id % (@support_types);
+		my $output_file_name = $path_output.$file_name_prefix.$id.$file_name_extension;
 
 		# my $cmd = "ln -s ";
 		my $cmd = "cp ";
@@ -80,23 +89,18 @@ sub create_snmp_records {
 		$cmd .= $support_types[$support_index];
 		$cmd .= '/';
 		$cmd .= $base_file;
-		
 		$cmd .= ' ';
-		
-		$cmd .= $path_output;
-		$cmd .= $file_name_prefix;
-		$cmd .= $id;
-		$cmd .= $file_name_extension;
+		$cmd .= $output_file_name;
 
 		# print $cmd, "\n";
 		`$cmd`;
 		
 		### Replace file content with specific string, lazy method.
 		my $new_mac = &generate_mac_by_id($id);
-		&replace_file_content_string(
-			$path_output.$file_name_prefix.$id.$file_name_extension,
-			$mac_placeholder,
-			$new_mac);
+		&replace_file_content_string($output_file_name, $mac_placeholder, $new_mac);
+
+		my $new_device_name = &generate_device_name_by_id($id);
+		&replace_file_content_string($output_file_name, $device_name_placeholder, $new_device_name);
 	}
 }
 
@@ -113,7 +117,9 @@ if (@ARGV < 3) {
 }
 
 print("Creating transport-based snmp records ...\n");
+
 my ($path, $start_id, $count) = @ARGV;
 &create_snmp_records($path, $start_id, $count);
+
 print("Operation commpleted.\n");
 

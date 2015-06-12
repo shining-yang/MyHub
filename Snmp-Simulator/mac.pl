@@ -35,4 +35,6 @@ unless (@ARGV < 1) {
 	pop @args;
 	$num = pop @args;
 }
+
 print &generate_mac_str($num);
+

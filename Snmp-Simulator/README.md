@@ -10,7 +10,7 @@ The SNMP simulator is originally built on the following environment.
 * Linux Mint 17 (Qiana)
 * perl v5.18.2
 * python v2.7.6
-* snmpsid v0.2.4
+* snmpsim v0.2.4
 
 #### Constraints
 * SNMP simulators use empty string as SNMP community name.
@@ -54,8 +54,8 @@ enter the following command to start SNMP simulator with default/predefined sett
     `./RUN.SH`
 
 or  
-    1. Run `./build-multiple-instance-scripts.pl` to generate scripts such as 'sim0', 'sim1', ...  
-    2. Open another shell console and launch SNMP simulation instance with command `./sim0`  
+    1. Run `./build-multiple-instance-scripts.pl` to generate scripts such as 'sim-xxx', ...
+    2. Open another shell console and launch SNMP simulation instance with command `./sim-xxx`  
 
 
 #### Spec & Additional Notes

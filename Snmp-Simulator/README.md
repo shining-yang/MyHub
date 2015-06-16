@@ -51,10 +51,10 @@ address.
 #### How to Run
 Navigate to the directory of this project with your terminal. Then
 enter the following command to start SNMP simulator with default/predefined settings.   
-    `./run.sh`
+    `./run.sh server-ip-address`
 
 or  
-    1. Run `./build-multiple-instance-scripts.pl` to generate scripts such as 'sim-xxx', ...
+    1. Run `./build-multiple-instance-scripts.pl server-ip-address` to generate scripts such as 'sim-xxx', ...
     2. Open another shell console and launch SNMP simulation instance with command `./sim-xxx`  
 
 

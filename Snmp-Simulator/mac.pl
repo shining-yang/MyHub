@@ -7,7 +7,7 @@ use strict;
 #
 ####################################################################
 
-my $mac_prefix = '001a1a1a'; # support 65535 MACs at most
+my $mac_prefix = '001a'; # MAC starts with '001a'
 
 # Better efficiency without bounds checking. Assume that ARGV is available
 
@@ -21,7 +21,7 @@ my $mac_prefix = '001a1a1a'; # support 65535 MACs at most
 sub generate_mac_str {
 	my ($id) = @_;
 	$id = 0 unless defined $id;
-	return sprintf("%s%04x", $mac_prefix, $id);
+	return sprintf("%s%08x", $mac_prefix, $id);
 }
 
 #

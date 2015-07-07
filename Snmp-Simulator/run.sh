@@ -2,7 +2,7 @@
 
 ###########################################################################
 #
-# Launch snmpsimd to simulate 256 SNMP devices which use port 50000~50199
+# Launch snmpsimd to simulate 250 SNMP devices which use port 50001~50250
 # y.s.n@live.com, 2015-06-02, SNMP-Simulation
 #
 ##########################################################################

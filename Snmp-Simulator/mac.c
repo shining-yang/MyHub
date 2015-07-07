@@ -35,16 +35,16 @@ int get_transport_id_pos(const char* para, int* offset, int* length)
 
 int main(int argc, char* argv[])
 {
-	unsigned short trans_id = 0;
+	int trans_id = 0;
 	if (argc > 1) {
 		char data[16] = { 0 };
 		int offset, length;
 		if (get_transport_id_pos(argv[1], &offset, &length)) {
 			memcpy(data, argv[1] + offset, length);
-			trans_id = (unsigned short)atoi(data);
+			trans_id = atoi(data);
 		}
 	}
 
-	printf("001a1a1a%04x", trans_id);
+	printf("001a%08x", trans_id);
 }
 

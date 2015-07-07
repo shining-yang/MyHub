@@ -2,7 +2,7 @@
 
 ###########################################################################
 #
-# Launch snmpsimd to simulate 200 SNMP devices which use port 50000~50199
+# Launch snmpsimd to simulate 256 SNMP devices which use port 50000~50199
 # y.s.n@live.com, 2015-06-02, SNMP-Simulation
 #
 ##########################################################################
@@ -15,25 +15,27 @@
 #	exit 0
 #fi
 
-##
-## TRY to auto-retrieve the IP address of localhost instead of specified by user
-##
-LOCALIP=`ifconfig  | grep 'inet addr:'| grep -v '127.0.0.1' | cut -d: -f2 | awk '{ print $1}'`
-echo "Use localhost IP: $LOCALIP"
+LOCALIP=`ifconfig | grep 'inet' | grep -v '127.0.0.1' | cut -d: -f2 | awk '{print $2}'`
+echo "### We will use localhost IP: $LOCALIP"
 #exit 0
 
 # REMOVE the tmp directory so that we can start over again
 echo "### Removing tmp directory to start over ...";
-rm  -rf  tmp
+rm  -rf  tmp/
 
 # Generate simulator argument files
 echo "### Building simulator arguments ..."
-perl  build-simulator-args.pl  $LOCALIP  50000  50199
+perl  build-simulator-args.pl  $LOCALIP  50001  50250
+
+# Generate disctinct transport id based on IP-address
+STARTID=`perl  gen-transport-id.pl  $LOCALIP`;
+echo "### We will use id start from: $STARTID";
 
 # Start snmp simulators
 echo "### Building SNMP transport id ..."
-perl  build-transport-id.pl  static  1000  200
+perl  build-transport-id.pl  ./static  $STARTID  250 
 
 # READY to invoke
 echo "### Run SNMP simulators now ...";
-snmpsimd  --v2c-arch  --data-dir=tmp  --transport-id-offset=1000  --args-from-file=tmp/sim_port_50000_50199.txt  &
+snmpsimd  --v2c-arch  --data-dir=./tmp  --transport-id-offset=$STARTID  --args-from-file=./tmp/sim_port_50001_50250.txt
+

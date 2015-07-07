@@ -7,7 +7,7 @@ use strict;
 #
 ####################################################################
 
-my $mac_prefix = '001a1a1a'; # mac prefix for simulated snmp devices
+my $mac_prefix = '001b'; # mac prefix for simulated snmp devices
 my $mac_placeholder = '001c1c1c1c1c';
 my $device_name_placeholder = 'DEVICE-NAME-XX';
 my $pwd = `pwd`;
@@ -17,15 +17,13 @@ chomp $pwd;
 sub generate_device_name_by_id {
 	my ($id) = @_;
 	$id = 0 unless defined $id;
-	$id &= 0xFFFF;
 	return sprintf("SIM-dev-%d", $id);
 }
 
 sub generate_mac_by_id {
 	my ($id) = @_;
 	$id = 0 unless defined $id;
-	$id &= 0xFFFF;
-	return sprintf("%s%04x", $mac_prefix, $id);
+	return sprintf("%s%08x", $mac_prefix, $id);
 }
 
 sub replace_file_content_string {

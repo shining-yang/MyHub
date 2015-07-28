@@ -15,7 +15,8 @@
 #	exit 0
 #fi
 
-LOCALIP=`ifconfig | grep 'inet' | grep -v '127.0.0.1' | cut -d: -f2 | awk '{print $2}'`
+#LOCALIP=`ifconfig | grep 'inet' | grep -v '127.0.0.1' | cut -d: -f2 | awk '{print $2}'`
+LOCALIP=`ifconfig | grep 'inet addr' | grep -v '127.0.0.1' | cut -d: -f2 | awk '{print $1}'`
 echo "### We will use localhost IP: $LOCALIP"
 #exit 0
 

@@ -38,3 +38,13 @@ glxinfo | grep OpenGL
 
 3> Compile program
 g++ main.c -lglut -lGL -lGLEW -lGLU -o OpenGLExample
+
+
+[32-bit or 64-bit OS, CPU]
+getconf LONG_BIT
+	This command check if the OS (kernel) is 32 bit or 64 bit.
+uname
+	This command prints system information including kernel version and whether kernel (os) is 32 bit or 64 bit.
+/proc/cpuinfo
+	Use this file to determine if CPU is 64 bit or 32 bit i.e. find out CPU architecture.
+	
